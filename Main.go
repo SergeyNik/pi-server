@@ -30,16 +30,10 @@ func main() {
 }
 
 func getSensorsInfo() {
+	//TODO: добавить вызов vcgencmd measure_temp для raspbrry pi
 	sensors, err := gosensors.NewFromSystem()
 	if err != nil {
 		panic(err)
 	}
-	//fmt.Println(sensors)
-	for chip := range sensors.Chips {
-		for key, value := range sensors.Chips[chip] {
-			if key == "Core 0" || key == "GPU" {
-				fmt.Println(key, value)
-			}
-		}
-	}
+	fmt.Println(sensors)
 }
